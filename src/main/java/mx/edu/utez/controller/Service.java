@@ -3,10 +3,7 @@ package mx.edu.utez.controller;
 import mx.edu.utez.model.Employee;
 import mx.edu.utez.util.ConnectionMysql;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -80,7 +77,7 @@ public class Service {
         }
         return employee;
     }
-    @GET
+    @POST
     @Path("/createEmployee/{employeeNumber}/{lastName}/{firstname}/{extension}/{email}/{officecode}/{reportsTo}/{jobTitle}")
     @Produces(MediaType.APPLICATION_JSON)
     public String createEmployee(@PathParam("employeeNumber") int employeeNumber,@PathParam("lastName") String lastName, @PathParam("firstname") String firstname, @PathParam("extension") String extension, @PathParam("email") String email,@PathParam("officecode") int officecode,@PathParam("reportsTo") int reportsTo, @PathParam("jobTitle") String jobTitle ){
@@ -113,11 +110,11 @@ public class Service {
         return text;
     }
 
-    @GET
+    @PUT
     @Path("/updateEmployee/{employeeNumber}/{lastName}/{firstname}/{extension}/{email}/{officecode}/{reportsTo}/{jobTitle}")
     @Produces(MediaType.APPLICATION_JSON)
     public String updateEmployee(@PathParam("employeeNumber") int employeeNumber,@PathParam("lastName") String lastName, @PathParam("firstname") String firstname, @PathParam("extension") String extension, @PathParam("email") String email,@PathParam("officecode") int officecode,@PathParam("reportsTo") int reportsTo, @PathParam("jobTitle") String jobTitle ){
-        //EX: http://localhost:8080/rest_war_exploded/employee/createEmployee/2117/Saucedo/Miriam/X0309/20203tn052@utez.edu.mx/1/2121/Presidente
+        //EX: http://localhost:8080/rest_war_exploded/employee/updateEmployee/2117/Saucedo/Miriam/X0309/20203tn052@utez.edu.mx/1/2121/Presidente
         boolean status = false;
         String text = "";
         try {
@@ -145,10 +142,11 @@ public class Service {
         }
         return text;
     }
-    @GET
+    @DELETE
     @Path("/deleteEmployee/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String deleteEmployee(@PathParam("id") int employeeNumber){
+        //EX: http://localhost:8080/rest_war_exploded/employee/deleteEmployee/2117
         boolean state = false;
         String text = "";
         try {
