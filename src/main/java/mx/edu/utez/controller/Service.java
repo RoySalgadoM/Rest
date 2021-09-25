@@ -78,10 +78,10 @@ public class Service {
         return employee;
     }
     @POST
-    @Path("/createEmployee/{employeeNumber}/{lastName}/{firstname}/{extension}/{email}/{officecode}/{reportsTo}/{jobTitle}")
+    @Path("/{employeeNumber}/{lastName}/{firstname}/{extension}/{email}/{officecode}/{reportsTo}/{jobTitle}")
     @Produces(MediaType.APPLICATION_JSON)
     public String createEmployee(@PathParam("employeeNumber") int employeeNumber,@PathParam("lastName") String lastName, @PathParam("firstname") String firstname, @PathParam("extension") String extension, @PathParam("email") String email,@PathParam("officecode") int officecode,@PathParam("reportsTo") int reportsTo, @PathParam("jobTitle") String jobTitle ){
-        //EX: http://localhost:8080/rest_war_exploded/employee/createEmployee/2117/Saucedo/Miriam/X0309/20203tn052@utez.edu.mx/1/2121/Presidente
+        //EX: http://localhost:8080/rest_war_exploded/employee/2117/Saucedo/Miriam/X0309/20203tn052@utez.edu.mx/1/2121/Presidente
         boolean status = false;
         String text = "";
         try {
@@ -111,10 +111,10 @@ public class Service {
     }
 
     @PUT
-    @Path("/updateEmployee/{employeeNumber}/{lastName}/{firstname}/{extension}/{email}/{officecode}/{reportsTo}/{jobTitle}")
+    @Path("/{employeeNumber}/{lastName}/{firstname}/{extension}/{email}/{officecode}/{reportsTo}/{jobTitle}")
     @Produces(MediaType.APPLICATION_JSON)
     public String updateEmployee(@PathParam("employeeNumber") int employeeNumber,@PathParam("lastName") String lastName, @PathParam("firstname") String firstname, @PathParam("extension") String extension, @PathParam("email") String email,@PathParam("officecode") int officecode,@PathParam("reportsTo") int reportsTo, @PathParam("jobTitle") String jobTitle ){
-        //EX: http://localhost:8080/rest_war_exploded/employee/updateEmployee/2117/Saucedo/Miriam/X0309/20203tn052@utez.edu.mx/1/2121/Presidente
+        //EX: http://localhost:8080/rest_war_exploded/employee/2117/Saucedo/MiriamGuadalupe/X0309/20203tn052@utez.edu.mx/1/2121/Presidente
         boolean status = false;
         String text = "";
         try {
@@ -143,7 +143,7 @@ public class Service {
         return text;
     }
     @DELETE
-    @Path("/deleteEmployee/{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String deleteEmployee(@PathParam("id") int employeeNumber){
         //EX: http://localhost:8080/rest_war_exploded/employee/deleteEmployee/2117
